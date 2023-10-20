@@ -25,9 +25,46 @@ async function run() {
     try {
         // Connect the client to the server	(optional starting in v4.7)
         await client.connect();
+        const siteCollection = client.db('productsDB').collection('site')
+        const brandCollection = client.db('productsDB').collection('brand')
         const productCollection = client.db('productsDB').collection('product')
         const userCollection = client.db('productsDB').collection('user')
 
+
+        // brand collection goes here =================
+        app.get('/site', async (req, res) => {
+            const cursor = siteCollection.find()
+            const result = await cursor.toArray()
+            res.send(result)
+
+        })
+
+        app.post('/site', async (req, res) => {
+            const site = req.body
+            console.log(site)
+            const result = await siteCollection.insertOne(site)
+            res.send(result)
+
+        })
+
+
+        // brand collection goes here =================
+        app.get('/brands', async (req, res) => {
+            const cursor = brandCollection.find()
+            const result = await cursor.toArray()
+            res.send(result)
+
+        })
+
+        app.post('/brands', async (req, res) => {
+            const brand = req.body
+            console.log(brand)
+            const result = await brandCollection.insertOne(brand)
+            res.send(result)
+
+        })
+
+        // product collection goes here =================
         app.get('/products', async (req, res) => {
             const cursor = productCollection.find()
             const result = await cursor.toArray()
