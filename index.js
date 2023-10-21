@@ -72,6 +72,21 @@ async function run() {
 
         })
 
+        app.get('/products/:id', async (req, res) => {
+            const id = req.params.id
+            const query = { _id: new ObjectId(id) }
+            const result = await productCollection.findOne(query)
+            res.send(result)
+
+        })
+
+        app.get('/products/brand/:brandName', async (req, res) => {
+            const brandName = req.params.brandName;
+            const query = { brandName: brandName };
+            const results = await productCollection.find(query).toArray();
+            res.send(results);
+        });
+
         app.post('/products', async (req, res) => {
             const product = req.body
             console.log(product)
