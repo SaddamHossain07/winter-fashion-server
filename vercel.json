@@ -1,5 +1,4 @@
 {
-    "name": "winter-fashion",
     "version": 2,
     "builds": [
         {
@@ -7,7 +6,6 @@
             "use": "@vercel/node"
         }
     ],
-    "team": "team_ttt1P6QDmN7HgpyA9cHdqfYA",
     "routes": [
         {
             "src": "/(.*)",
