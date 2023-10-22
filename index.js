@@ -24,7 +24,7 @@ const client = new MongoClient(uri, {
 async function run() {
     try {
         // Connect the client to the server	(optional starting in v4.7)
-        // client.connect();
+        // await client.connect();
         const siteCollection = client.db('productsDB').collection('site')
         const brandCollection = client.db('productsDB').collection('brand')
         const productCollection = client.db('productsDB').collection('product')
